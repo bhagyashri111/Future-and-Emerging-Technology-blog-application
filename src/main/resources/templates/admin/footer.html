@@ -1,0 +1,51 @@
+<!--<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+        <style>
+            .full-width-footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: black;
+                //background-color:black; /* Change to your desired background color */
+                color: grey; /* Change to your desired text color */
+                padding: 20px; /* Adjust padding as needed */
+                text-align: center;
+
+            }
+        </style>
+    </head>
+
+<body>
+
+
+<footer class="full-width-footer">
+    <div>
+
+            <p>
+                Copyright © 2024-All rights reserved
+            </p>
+
+    </div>
+</footer>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<body>
+<footer class="footer-copyright text-center bg-dark py-3"
+        style="position:fixed; width:100%; bottom:0; color:white"
+        th:fragment="footer">
+    <div>
+        <strong>
+            <a href="">Copyright © 2024-All rights reserved</a>
+
+        </strong>
+    </div>
+</footer>
+</body>
+</html>

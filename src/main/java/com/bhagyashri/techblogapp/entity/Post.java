@@ -41,6 +41,6 @@ public class Post {
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 
-   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
    private Set<Comment> comments = new HashSet<>();
 }

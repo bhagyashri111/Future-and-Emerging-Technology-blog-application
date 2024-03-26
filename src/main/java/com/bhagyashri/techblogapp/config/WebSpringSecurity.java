@@ -31,10 +31,13 @@ public class WebSpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
-                      authorize.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll().requestMatchers(new AntPathRequestMatcher("/register/**")).permitAll()
-                               .requestMatchers(new AntPathRequestMatcher("/admin/**"))
-                              .hasAnyRole("ADMIN", "GUEST").requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-                               .requestMatchers(new AntPathRequestMatcher("/post/**")).permitAll()
+                      authorize.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
+                              .requestMatchers(new AntPathRequestMatcher("/register/**")).permitAll()
+                              .requestMatchers(new AntPathRequestMatcher("/admin/**"))
+                              .hasAnyRole("ADMIN", "GUEST")
+                              .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                              .requestMatchers(new AntPathRequestMatcher("/post/**")).permitAll()
+                              .requestMatchers(new AntPathRequestMatcher("/**/comments")).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin( form -> form

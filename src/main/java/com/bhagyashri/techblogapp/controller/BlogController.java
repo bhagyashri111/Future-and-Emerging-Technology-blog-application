@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 public class BlogController {
@@ -21,25 +22,18 @@ public class BlogController {
     public BlogController(PostService postService) {
         this.postService = postService;
     }
+    private static final Logger logger = Logger.getLogger(BlogController.class.getName());
 
 
     // handler method to handle http://localhost:8080/
     @GetMapping("/")
     public String viewBlogPosts(Model model){
         List<PostDto> postsResponse = postService.findAllposts();
+        logger.info("Get blogs response " + postsResponse);
         model.addAttribute("postsResponse", postsResponse);
         return "blog/view_posts";
     }
 
-// handler method to handle view post request
-/*@GetMapping("/post/{postUrl}")
-private String showPost(@PathVariable("postUrl") String postUrl,
-                        Model model){
-    PostDto post = postService.findPostByUrl(postUrl);
-    model.addAttribute("post", post);
-    model.addAttribute("comment", CommentDto);
-    return "blog/blog_post";
-}*/
 
     // handler method to handle view post request
     @GetMapping("/post/{postUrl}")

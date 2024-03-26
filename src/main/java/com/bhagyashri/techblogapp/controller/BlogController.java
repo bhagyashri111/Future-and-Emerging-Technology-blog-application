@@ -43,6 +43,7 @@ public class BlogController {
 
         CommentDto commentDto = new CommentDto();
         model.addAttribute("post", post);
+        logger.info("Comments " + commentDto);
         model.addAttribute("comment", commentDto);
         return "blog/blog_post";
     }
@@ -52,6 +53,7 @@ public class BlogController {
     public String searchPosts(@RequestParam(value = "query") String query,
                               Model model){
         List<PostDto> postsResponse = postService.searchPosts(query);
+        logger.info("Search blogs response " + postsResponse);
         model.addAttribute("postsResponse", postsResponse);
         return "blog/view_posts";
     }
